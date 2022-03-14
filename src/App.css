@@ -28,6 +28,11 @@
   color: #61dafb;
 }
 
+form, input, select, option, label {
+  font-size: 1.2em;
+  margin: .5em
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
