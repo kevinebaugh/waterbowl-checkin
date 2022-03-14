@@ -13,7 +13,7 @@ function App() {
       .then(visitData => {
         updateVisits(visitData)
       })
-  },)
+  })
 
   function handleNewVisit(visit) {
     fetch("http://localhost:9292/waterbowl_visits",
@@ -29,12 +29,22 @@ function App() {
     )
   }
 
+  function handleDeleteVisit(event) {
+    fetch(`http://localhost:9292/waterbowl_visits/${event.target.id}`,
+      {
+        method: "DELETE"
+      })
+      .then(res => res.json())
+      .then(json => console.log(json))
+
+  }
+
   return (
     <>
       <h1>Waterbowl Checkins</h1>
       <CheckinForm visits={visits} handleNewVisit={handleNewVisit} />
       <hr/>
-      <CheckinList visits={visits} />
+      <CheckinList visits={visits} handleDeleteVisit={handleDeleteVisit} />
     </>
   );
 }

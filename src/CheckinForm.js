@@ -4,9 +4,9 @@ import './App.css';
 
 function CheckinForm({ visits, handleNewVisit }) {
   const [formData, updateFormData] = useState({
-    dog_id: "1",
-    waterbowl_id: "null",
-    comment: "😋"
+    // dog_id: "1",
+    // waterbowl_id: "null",
+    // comment: "😋"
   });
 
   const [waterbowls, updateWaterbowls] = useState([])
@@ -46,24 +46,26 @@ function CheckinForm({ visits, handleNewVisit }) {
     <div className="CheckinForm">
       <h2>New check in:</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="dog_id">🐶 Dog:</label>
-        <select id="dog_id" name="dog" onChange={handleChange}>
+        <label htmlFor="dog_id">🐶</label>
+        <select required id="dog_id" name="dog" onChange={handleChange}>
+          <option disabled selected value>select a dog</option>
           {dogs.map( (dog) => {
               return <option value={dog.id} key={dog.id}>{dog.name}</option>
             }
           )}
         </select>
         <br/>
-        <label htmlFor="waterbowl_id">💦 Waterbowl:</label>
-        <select id="waterbowl_id" name="waterbowl" onChange={handleChange}>
+        <label htmlFor="waterbowl_id">💦</label>
+        <select required id="waterbowl_id" name="waterbowl" defaultValue={formData.dog_id} onChange={handleChange}>
+          <option disabled selected value>select a waterbowl</option>
           {waterbowls.map( (waterbowl) => {
               return <option value={waterbowl.id} key={waterbowl.id}>{waterbowl.label}</option>
             }
           )}
         </select>
         <br/>
-        <label htmlFor="comment">🗣 Comment:</label>
-        <input type="text" id="comment" defaultValue={formData.comment} onChange={handleChange} />
+        <label htmlFor="comment">🗣</label>
+        <input required type="text" id="comment" placeholder="Woof!" onChange={handleChange} />
         <br/>
         <input type="submit" value="Submit" />
       </form>
