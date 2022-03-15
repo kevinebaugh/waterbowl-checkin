@@ -3,11 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 function CheckinForm({ visits, handleNewVisit }) {
-  const [formData, updateFormData] = useState({
-    // dog_id: "1",
-    // waterbowl_id: "null",
-    // comment: "😋"
-  });
+  const [formData, updateFormData] = useState({});
 
   const [waterbowls, updateWaterbowls] = useState([])
   const [dogs, updateDogs] = useState([])
