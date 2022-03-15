@@ -8,14 +8,17 @@ function NavBar() {
         to="/checkins"
         exact
         style={isActive => ({
-          color: isActive ? "purple" : "pink"
+          color: isActive ? "#031804" : "#105C13"
         })}
         activeStyle={null}
       > Checkins </NavLink>
+      &nbsp;|&nbsp;
       <NavLink
         to="/dogs"
         exact
-        style={null}
+        style={isActive => ({
+          color: isActive ? "#031804" : "#105C13"
+        })}
         activeStyle={null}
       > Dog Management </NavLink>
     </div>
