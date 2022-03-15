@@ -8,6 +8,11 @@ function CheckinForm({ visits, handleNewVisit }) {
   const [waterbowls, updateWaterbowls] = useState([])
   const [dogs, updateDogs] = useState([])
 
+  const [randomDogNoise, updateRandomDogNoise] = useState("")
+
+  useEffect( () => {
+    updateRandomDogNoise(["Woof!", "Bark!", "Arf!", "Aroof aroof aroof!", "Yowww!", "Awhooo!"].sort(function (a, b) { return 0.5 - Math.random() })[0])
+  }, [])
 
   useEffect(() => {
     fetch('http://localhost:9292/waterbowls')
@@ -61,7 +66,7 @@ function CheckinForm({ visits, handleNewVisit }) {
         </select>
         <br/>
         <label htmlFor="comment">🗣</label>
-        <input required type="text" id="comment" placeholder="Woof!" onChange={handleChange} />
+        <input required type="text" id="comment" placeholder={randomDogNoise} onChange={handleChange} />
         <br/>
         <input type="submit" value="Submit" />
       </form>
